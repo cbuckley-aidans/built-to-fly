@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Rocket Thrust Curve Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="tutorial-container">
+        <!-- Left Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="sidebar-logo">THRUST<br>CURVE</div>
+            <div class="step-button active" data-step="0" data-tooltip="Introduction">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <div class="step-button" data-step="1" data-tooltip="Water Rocket Simulator">
+                <span>1</span>
+            </div>
+            <div class="step-button" data-step="2" data-tooltip="Saving Raw Data">
+                <span>2</span>
+            </div>
+            <div class="step-button" data-step="3" data-tooltip="Importing to Excel">
+                <span>3</span>
+            </div>
+            <div class="step-button" data-step="4" data-tooltip="Cleaning Excel Data">
+                <span>4</span>
+            </div>
+            <div class="step-button" data-step="5" data-tooltip="Thrust Curve Template">
+                <span>5</span>
+            </div>
+            <div class="step-button" data-step="6" data-tooltip="Adding Thrust Data">
+                <span>6</span>
+            </div>
+            <div class="step-button" data-step="7" data-tooltip="Refining Data Headers">
+                <span>7</span>
+            </div>
+            <div class="step-button" data-step="8" data-tooltip="Importing to OpenRocket">
+                <span>8</span>
+            </div>
+        </div>
+
+        <!-- Middle Instructions Panel -->
+        <div class="instructions-panel">
+            <h1 id="current-step-title">Introduction</h1>
+            
+            <div id="step-instructions">
+                <!-- Will be populated by JavaScript -->
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation">
+                <button id="prevButton" class="nav-button" disabled><i class="fas fa-arrow-left"></i> Previous</button>
+                <button id="nextButton" class="nav-button">Next <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-text">Progress: <span id="progress-percentage">0%</span></div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="footer">
+                Made with <span style="color: var(--accent-color);">♥</span> by <span id="creator-name">Buckley</span>
+            </div>
+        </div>
+
+        <!-- Right Content Display Area -->
+        <div class="content-display">
+            <div class="card">
+                <h2 id="content-title">Introduction</h2>
+                <div id="media-content">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for viewing images -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage" class="modal-content">
+    </div>
+
+    <script>
+        // Tutorial content configuration
+        const stepTitles = [
+            "Introduction",
+            "Using the Water Rocket Simulator",
+            "Saving the Raw Data",
+            "Importing Data into Excel",
+            "Cleaning the Excel Data",
+            "Setting up the Thrust Curve Template",
+            "Adding/Replacing Thrust Curve Data",
+            "Refining the Data Headers",
+            "Importing into OpenRocket"
+        ];
+
+        const stepInstructions = [
+            // Step 0: Introduction
+            `<h3>Creating Custom Thrust Curves for Water Rockets</h3>
+            
+            <div class="card">
+                <p><strong>Learning Intentions:</strong></p>
+                <ol class="steps-list">
+                    <li>Learn how to generate thrust curve data from water rocket simulations</li>
+                    <li>Understand how to process and format data for OpenRocket</li>
+                    <li>Master the process of importing custom motor files into OpenRocket</li>
+                </ol>
+            
+                <p><strong>Success Criteria:</strong></p>
+                <ol class="steps-list">
+                    <li>Successfully extract thrust data from the Water Rocket Simulator</li>
+                    <li>Clean and format data correctly in Excel</li>
+                    <li>Create a properly formatted .eng file for OpenRocket</li>
+                    <li>Import and use the custom thrust curve in OpenRocket simulations</li>
+                </ol>
+            </div>
+            
+            <div class="alert-box alert-info">
+                <p><strong>What You'll Need:</strong></p>
+                <ul class="steps-list">
+                    <li>Access to the Water Rocket Simulator website</li>
+                    <li>Microsoft Excel or similar spreadsheet software</li>
+                    <li>OpenRocket software installed on your computer</li>
+                </ul>
+            </div>`,
+            
+            // Step 1: Using the Water Rocket Simulator
+            `<h3>Using the Water Rocket Simulator</h3>
+            <p>In this first step, you'll learn how to use the online Water Rocket Simulator to generate thrust data for your rocket design.</p>
+            
+            <div class="card">
+                <h4>Simulation Steps:</h4>
+                <ol class="steps-list">
+                    <li>Enter your rocket's measurements: Update the five main fields (Rocket Outside Diameter, Nozzle Exit Diameter, Total Volume, Water Amount, and Empty Mass).</li>
+                    <li>Run simulation: Once your measurements are in, scroll down and click the 'Run Simulation' button.</li>
+                    <li>Find the thrust curve: Scroll to the bottom of the page to see the simulation results and find the 'Thrust' graph.</li>
+                    <li>Copy raw data: Open the 'Raw Data' tab and copy all the text inside.</li>
+                </ol>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i> Tip</div>
+                <p>Make sure all your measurements are accurate before running the simulation. The quality of your thrust curve depends on accurate input data.</p>
+            </div>`,
+            
+            // Step 2: Saving the Raw Data
+            `<h3>Saving the Raw Data</h3>
+            <p>Now that you have the simulation data copied, you'll save it as a text file for processing.</p>
+            
+            <div class="card">
+                <h4>Saving Steps:</h4>
+                <ol class="steps-list">
+                    <li>Create a new file: In your project folder, right-click and create a new Text Document.</li>
+                    <li>Name the file: Give it a clear name, like 'raw data.txt'.</li>
+                    <li>Paste and save: Open the text file, paste the data you copied from the simulator, and save the file before closing.</li>
+                </ol>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i> Tip</div>
+                <p>Keep your project files organised in a dedicated folder. This will make it easier to find everything later when you need to import into OpenRocket.</p>
+            </div>`,
+            
+            // Step 3: Importing Data into Excel
+            `<h3>Importing Data into Excel</h3>
+            <p>In this step, you'll import the raw data from your text file into Excel for cleaning and formatting.</p>
+            
+            <div class="card">
+                <h4>Import Steps:</h4>
+                <ol class="steps-list">
+                    <li>Open Excel: Start with a new blank workbook.</li>
+                    <li>Import the text file: Click the 'Data' tab at the top, then select 'From Text/CSV'.</li>
+                    <li>Select your file: Find your 'raw data.txt' file and click 'Import'.</li>
+                    <li>Load data: A preview window will appear. Click 'Load' to bring the data into your spreadsheet.</li>
+                </ol>
+            </div>
+            
+            `,
+            
+            // Step 4: Cleaning the Excel Data
+            `<h3>Cleaning the Excel Data</h3>
+            <p>The raw data needs to be cleaned up before it can be used in OpenRocket. Follow these steps carefully to ensure your data is properly formatted.</p>
+            
+            <div class="card">
+                <h4>Data Cleaning Steps:</h4>
+                <ol class="steps-list">
+                    <li>Remove unnecessary columns: Delete all columns except for 'Time' and 'Thrust'.</li>
+                    <li>Clean up header rows: Delete the extra header rows (containing words like Time, S, Thrust, N).</li>
+                    <li>Remove duplicate zeros: Delete any rows with '0' values at the start, leaving only the very first one.</li>
+                    <li>Handle duplicate time values:
+                        <ul>
+                            <li>Highlight both columns.</li>
+                            <li>Go to Conditional Formatting > Highlight Cells Rules > Duplicate Values and click OK.</li>
+                            <li>Scroll through the 'Time' column. If any values are highlighted in red, slightly modify the last decimal point (e.g., change .019821 to .019822) to make it unique without changing the data significantly.</li>
+                        </ul>
+                    </li>
+                    <li>Final clean up: At the end of your data, keep only the very last '0' value and delete any other duplicate zero rows.</li>
+                </ol>
+            </div>
+            
+            `,
+            
+            // Step 5: Setting up the Thrust Curve Template
+            `<p>In this step, you will locate raw engine data and create a specialized .eng file that OpenRocket can use to simulate your rocket's performance.</p>
+
+<div class="card"> <h4>Template Creation Steps:</h4> <ol class="steps-list"> <li><strong>Access the Reference Data:</strong> Click the <strong>Thrust Curve Template</strong> tile on your Tech page to open the motor database website.</li> <li><strong>Copy Raw Data:</strong> Scroll down to the <strong>Raw Data</strong> section of the example engine, highlight all the text in the box, and copy it.</li> <li><strong>Create a New File:</strong> Navigate to your project folder, right-click, and create a new <strong>Text Document</strong>.</li> <li><strong>Set the File Extension:</strong> Rename the file to <span class="kbd">water thrust curve.eng</span>. When the warning appears about changing the file extension, click <strong>Yes</strong>.</li> <li><strong>Paste the Data:</strong> Right-click your new file, select <strong>Open with</strong> > <strong>Notepad</strong>, and paste the raw data you copied from the website.</li> </ol> </div>
+
+<div class="tip-box"> <div class="tip-title"><i class="fas fa-lightbulb"></i> Why the .eng extension?</div> <p>OpenRocket specifically looks for the <span class="kbd">.eng</span> (RASP) format to identify thrust curves. By saving your text as this file type, the software can read the data points to calculate how your rocket will fly.</p> </div>`,
+            
+            // Step 6: Adding/Replacing Thrust Curve Data
+            `<h3>Adding/Replacing Thrust Curve Data</h3>
+            <p>Once your calculations are complete, you must transfer the data from Excel to your .eng file and ensure the spacing is correctly formatted for OpenRocket to read it.</p>
+
+<div class="card"> <h4>Data Integration Steps:</h4> <ol class="steps-list"> <li><strong>Prepare Workspace:</strong> Open your Excel calculation file and your thrust curve text file side-by-side.</li> <li><strong>Copy Calculation Data:</strong> Highlight all the numerical data points in your Excel sheet, ensuring you do not include the column headers, and copy them.</li> <li><strong>Replace Text Values:</strong> In the text file, select all existing numerical values (preserving the header lines at the top) and paste your Excel data over them.</li> <li><strong>Identify Formatting Gaps:</strong> Locate a large gap between the two columns of numbers in your text file. Highlight one of these gaps and copy it.</li> <li><strong>Open Replace Tool:</strong> Press <span class="kbd">Ctrl</span> + <span class="kbd">H</span> on your keyboard to open the Find and Replace dialog.</li> <li><strong>Apply Spacing Fix:</strong> In the <strong>Find</strong> box, paste the large gap you just copied. In the <strong>Replace</strong> box, type a single space.</li> <li><strong>Execute Global Change:</strong> Click <strong>Replace All</strong> to automatically convert every large gap in the file into a single space.</li> <li><strong>Verify Results:</strong> Review the file to ensure there are no large gaps remaining and that exactly one space exists between the numbers on every line.</li> </ol> </div>
+
+<div class="tip-box"> <div class="tip-title"><i class="fas fa-keyboard"></i> Explicit Ctrl + H Settings</div> <p><strong>Find:</strong> [Paste the large gap/tab copied from the file]</p> <p><strong>Replace with:</strong> [Type one single space using the spacebar]</p> </div>`,
+            
+            // Step 7: Refining the Data Headers
+            `<h3>Refining the Data Headers</h3>
+            <p>Before importing into OpenRocket, double-check that your header line is formatted correctly with all required information.</p>
+            
+            <div class="card">
+                <h4>Header Verification Steps:</h4>
+                <ol class="steps-list">
+                    <li>Verify the Header Order: Check that your header line follows this specific sequence:
+                        <ul>
+                            <li><span class="kbd">Motor_Name</span> <span class="kbd">Diameter(mm)</span> <span class="kbd">Length(mm)</span> <span class="kbd">Delays</span> <span class="kbd">Propellant_Weight(kg)</span> <span class="kbd">Total_Weight(kg)</span> <span class="kbd">Manufacturer</span></li>
+                        </ul>
+                    </li>
+                    <li>Check Units: Double-check that weights are in kilograms (not grams) and dimensions are in millimetres.</li>
+                    <li>Add Comments (Optional): You can add lines starting with a semicolon <span class="kbd">;</span> at the very top for your own notes; OpenRocket will ignore these.</li>
+                </ol>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i> Important</div>
+                <p>Getting the header format exactly right is crucial. OpenRocket uses this information to properly simulate your rocket's performance.</p>
+            </div>`,
+            
+            // Step 8: Importing into OpenRocket
+            `<h3>Importing into OpenRocket</h3>
+            <p>To use your custom thrust data, you must first tell OpenRocket where to find your file and then assign that motor to your rocket design.</p>
+
+<div class="card"> <h4>Import and Configuration Steps:</h4> <ol class="steps-list"> <li><strong>Access Preferences:</strong> Launch OpenRocket, click the <strong>Edit</strong> menu at the top, and select <strong>Preferences</strong>.</li> <li><strong>Link Thrust Curve Folder:</strong> Under the <strong>General</strong> tab, locate the <strong>User-defined thrust curves</strong> section and click the <strong>Add</strong> button.</li> <li><strong>Select the File:</strong> Navigate to your project folder, select your <span class="kbd">.eng</span> file (e.g., <span class="kbd">water thrust curve.eng</span>), and click <strong>Open</strong>.</li> <li><strong>Restart the Software:</strong> Click <strong>OK</strong> to save the path, then close and <strong>restart OpenRocket</strong> to ensure the new motor data is loaded into the database.</li> <li><strong>Set Up Configuration:</strong> Open your rocket design, go to the <strong>Motors & Configuration</strong> tab, and click <strong>New Configuration</strong>.</li> <li><strong>Filter the Database:</strong> Click <strong>Select motor</strong>. In the right-hand filter panel, click <strong>Clear All</strong> and then check the box for your specific manufacturer name (e.g., <strong>Buckley</strong>).</li> <li><strong>Load the Motor:</strong> Highlight your custom motor (e.g., <strong>BuckleyBlast</strong>) in the list and click <strong>OK</strong> to load it into your design.</li> </ol> </div>
+
+<div class="tip-box"> <div class="tip-title"><i class="fas fa-sync-alt"></i> Important: The Restart Rule</div> <p>OpenRocket only scans for new motor files during its startup sequence. If you add a directory or edit your <span class="kbd">.eng</span> file while the program is open, your changes will not appear until you restart the application.</p> </div>`
+        ];
+
+        const stepMedia = [
+            // Step 0: Introduction
+            `<div class="alert-box alert-info">
+                <p><strong>About This Tutorial</strong></p>
+                <p>This tutorial will guide you through the complete process of creating custom thrust curves for water rockets in OpenRocket. You'll learn how to extract simulation data, process it correctly, and import it into OpenRocket for accurate flight predictions.</p>
+            </div>
+
+            <div class="alert-box alert-warning">
+                <p><strong><i class="fas fa-info-circle"></i> Before You Begin</strong></p>
+                <p>Make sure you have all the required software installed and your rocket measurements ready. This will ensure a smooth workflow through all eight steps.</p>
+            </div>`,
+            
+            // Step 1: Using the Water Rocket Simulator
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG70Fmxf_g/oQ6KkiaJTaVsYOwT_dFTEw/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+</div>`,
+            
+            // Step 2: Saving the Raw Data
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG70JWAVkQ/Jdm2JinQmDxmZAZARYsB6A/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+</div>`,
+            
+            // Step 3: Importing Data into Excel
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG70CNRYK0/PPDbJl06bSzc9KHBjKu0fg/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+</div>`,
+            
+            // Step 4: Cleaning the Excel Data
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG70FNaklA/ppuVdNHjWEVVL6Pdst6nGg/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+</div>`,
+            
+            // Step 5: Setting up the Thrust Curve Template
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG70L-1H3Q/xJGW8Yk9L_uLzeOHnYJTNw/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+</div>`,
+            
+            // Step 6: Adding/Replacing Thrust Curve Data
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG70GWh3Ms/tuCGFu7WRsJ3o52gsjAM2Q/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+</div>`,
+            
+            // Step 7: Refining the Data Headers
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG70P8DweE/bnlA5tq0cpYCizYYo_4uFg/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+</div>`,
+            
+            // Step 8: Importing into OpenRocket
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG70K-p5zQ/_4Pcq21XkH1XizE0irHP4g/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+</div>`
+        ];
+
+        // Current step tracking
+        let currentStep = 0;
+        const totalSteps = stepInstructions.length;
+
+        // DOM Elements
+        const stepButtons = document.querySelectorAll('.step-button');
+        const stepTitleEl = document.getElementById('current-step-title');
+        const instructionsPanel = document.getElementById('step-instructions');
+        const mediaContent = document.getElementById('media-content');
+        const contentTitle = document.getElementById('content-title');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const progressBar = document.querySelector('.progress');
+        const progressPercentage = document.getElementById('progress-percentage');
+
+        // Image modal
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalClose = document.querySelector('.modal-close');
+
+        // Initialize the tutorial
+        function showStep(step) {
+            // Update active step button
+            stepButtons.forEach((button, index) => {
+                button.classList.toggle('active', index === step);
+            });
+
+            // Update step title
+            stepTitleEl.textContent = stepTitles[step];
+            contentTitle.textContent = stepTitles[step];
+
+            // Update content
+            instructionsPanel.innerHTML = stepInstructions[step];
+            mediaContent.innerHTML = stepMedia[step];
+
+            // Update navigation buttons
+            prevButton.disabled = step === 0;
+            nextButton.style.display = step === totalSteps - 1 ? 'none' : 'flex';
+            
+            // Update progress
+            const progress = Math.round(((step + 1) / totalSteps) * 100);
+            progressBar.style.width = `${progress}%`;
+            progressPercentage.textContent = `${progress}%`;
+            
+            currentStep = step;
+        }
+
+        // Simple tooltip implementation
+        function setupTooltips() {
+            // Remove any existing tooltips
+            const existingTooltips = document.querySelectorAll('.tooltip');
+            existingTooltips.forEach(t => t.remove());
+            
+            // Create new tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            document.body.appendChild(tooltip);
+            
+            // Add event listeners to all step buttons
+            const stepButtons = document.querySelectorAll('.step-button');
+            stepButtons.forEach(button => {
+                const tooltipText = button.getAttribute('data-tooltip');
+                if (!tooltipText) return;
+                
+                // On mouse enter
+                button.addEventListener('mouseenter', () => {
+                    // Set tooltip text
+                    tooltip.textContent = tooltipText;
+                    
+                    // Position tooltip based on viewport width
+                    const rect = button.getBoundingClientRect();
+                    if (window.innerWidth <= 1024) {
+                        // Position below on mobile
+                        tooltip.className = 'tooltip bottom';
+                        tooltip.style.top = `${rect.bottom + 10}px`;
+                        tooltip.style.left = `${rect.left + rect.width/2}px`;
+                        tooltip.style.transform = 'translateX(-50%)';
+                    } else {
+                        // Position to the right on desktop
+                        tooltip.className = 'tooltip right';
+                        tooltip.style.top = `${rect.top + rect.height/2}px`;
+                        tooltip.style.left = `${rect.right + 10}px`;
+                        tooltip.style.transform = 'translateY(-50%)';
+                    }
+                    
+                    // Make tooltip visible
+                    tooltip.style.opacity = '1';
+                });
+                
+                // On mouse leave
+                button.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+        }
+
+        // Event Listeners
+        stepButtons.forEach((button, index) => {
+            button.addEventListener('click', () => showStep(index));
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentStep > 0) showStep(currentStep - 1);
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentStep < totalSteps - 1) showStep(currentStep + 1);
+        });
+
+        // Image modal functionality
+        document.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG' && e.target.parentElement.classList.contains('image-container')) {
+                modal.style.display = 'block';
+                modalImg.src = e.target.src;
+                modalImg.alt = e.target.alt;
+            }
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Creator name with confetti
+        document.getElementById('creator-name').addEventListener('click', () => {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.8 },
+                colors: ['#002654', '#f7f7f7', '#f0f0f0', '#191919']
+            });
+        });
+
+        // Initialize with first step and set up tooltips
+        document.addEventListener('DOMContentLoaded', () => {
+            showStep(0);
+            setupTooltips();
+            
+            // Update tooltips on window resize
+            window.addEventListener('resize', () => {
+                setupTooltips();
+            });
+            
+            // Update tooltips whenever a step button is clicked
+            document.querySelectorAll('.step-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    setTimeout(setupTooltips, 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
