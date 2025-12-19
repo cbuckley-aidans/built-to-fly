@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Terminology Reference</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon Icons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" style="overflow-y: auto; overflow-x: hidden;">
+        <div class="sidebar-logo">ROCKET TERMINOLOGY</div>
+        <a href="../index.html" class="home-button">
+            <i class="fas fa-home"></i>
+            HOME
+        </a>
+        <div class="sidebar-nav">
+            <button class="tab-button active" data-tab="flight">
+                <i class="fas fa-plane-departure"></i>
+                FLIGHT
+            </button>
+            <button class="tab-button" data-tab="parts">
+                <i class="fas fa-rocket"></i>
+                ROCKET PARTS
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Flight Section -->
+        <section id="flight" class="tab-content active light-section">
+            <h1>FLIGHT CONCEPTS <i class="fas fa-plane-departure" style="margin-left: 15px;"></i></h1>
+            
+            <p style="font-size: 1.2em; margin-bottom: 30px; text-align: center;">Understanding the physics and forces that make rockets fly</p>
+            
+            <!-- Thrust -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">1</div>
+                    <h3>Thrust <i class="fas fa-fire" style="margin-left: 15px; color: var(--accent-color);"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;"><strong>Thrust</strong> is the force that pushes a rocket upward and forward. It's created when the rocket engine burns fuel and expels hot gases at high speed out of the nozzle.</p>
+                
+                <div style="text-align: center; margin: 25px 0;">
+                    <img src="https://thumbs.dreamstime.com/b/water-rocket-vector-illustration-labeled-model-process-explanation-water-rocket-vector-illustration-labeled-model-168832394.jpg" alt="Water Rocket Thrust Diagram" style="max-width: 600px; width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: 0 4px 12px rgba(0,0,0,0.15); background-color: white; padding: 15px;">
+                    <p style="font-size: 0.9em; margin-top: 10px; color: #666;"><i class="fas fa-info-circle" style="margin-right: 8px;"></i> How thrust is generated: expelled mass creates an equal and opposite reaction force</p>
+                </div>
+                
+                <div style="background-color: rgba(82, 196, 26, 0.1); border-radius: var(--border-radius); padding: 20px; margin-top: 15px;">
+                    <p style="margin: 0; font-size: 1.1em;"><i class="fas fa-lightbulb" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Think of it like this:</strong> When you blow up a balloon and let it go, the air rushing out pushes the balloon forward. Rocket thrust works the same way, but much more powerfully!</p>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background-color: rgba(0,0,0,0.05); border-radius: var(--border-radius);">
+                    <p style="margin: 0;"><strong>Formula:</strong> Thrust = (mass flow rate) × (exit velocity)</p>
+                </div>
+            </div>
+            
+            <!-- Newtons -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">2</div>
+                    <h3>Newtons (N) <i class="fas fa-balance-scale" style="margin-left: 15px; color: var(--accent-color);"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;"><strong>Newtons (N)</strong> are the unit used to measure force, including thrust. One newton is roughly the force needed to hold up a small apple (about 100 grams) against gravity.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                    <div style="background-color: rgba(24, 144, 255, 0.1); padding: 20px; border-radius: var(--border-radius); text-align: center;">
+                        <div style="font-size: 2em; margin-bottom: 10px;">🍎</div>
+                        <p style="margin: 0; font-weight: 600;">1 N</p>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9em;">Small apple</p>
+                    </div>
+                    <div style="background-color: rgba(82, 196, 26, 0.1); padding: 20px; border-radius: var(--border-radius); text-align: center;">
+                        <div style="font-size: 2em; margin-bottom: 10px;">🎒</div>
+                        <p style="margin: 0; font-weight: 600;">50 N</p>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9em;">School backpack</p>
+                    </div>
+                    <div style="background-color: rgba(250, 140, 22, 0.1); padding: 20px; border-radius: var(--border-radius); text-align: center;">
+                        <div style="font-size: 2em; margin-bottom: 10px;">🚀</div>
+                        <p style="margin: 0; font-weight: 600;">1000+ N</p>
+                        <p style="margin: 5px 0 0 0; font-size: 0.9em;">Model rocket</p>
+                    </div>
+                </div>
+                
+                <div style="background-color: rgba(0,0,0,0.05); border-radius: var(--border-radius); padding: 15px; margin-top: 15px;">
+                    <p style="margin: 0;"><strong>Named after:</strong> Sir Isaac Newton, who discovered the laws of motion that explain how forces work.</p>
+                </div>
+            </div>
+            
+            <!-- Air Resistance (Drag) -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">3</div>
+                    <h3>Air Resistance (Drag) <i class="fas fa-wind" style="margin-left: 15px; color: var(--accent-color);"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;"><strong>Air resistance</strong>, also called <strong>drag</strong>, is the force that opposes a rocket's motion through the air. As the rocket moves upward, it has to push air molecules out of the way, which slows it down.</p>
+                
+                <div style="text-align: center; margin: 25px 0;">
+                    <img src="https://letstalkscience.ca/sites/default/files/styles/width_800px/public/2021-11/lift-induced_drag.png?itok=M021VrWJ" alt="Drag Forces Diagram" style="max-width: 600px; width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: 0 4px 12px rgba(0,0,0,0.15); background-color: white; padding: 15px;">
+                </div>
+                
+                <div style="background-color: rgba(255, 77, 79, 0.1); border-radius: var(--border-radius); padding: 20px; margin: 20px 0;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-exclamation-triangle" style="color: #ff4d4f; margin-right: 10px;"></i> Factors That Increase Drag:</h4>
+                    <ul style="font-size: 1.1em; margin: 10px 0 0 20px;">
+                        <li>Higher speed</li>
+                        <li>Larger surface area</li>
+                        <li>Rough or irregular surfaces</li>
+                        <li>Blunt nose cone shapes</li>
+                    </ul>
+                </div>
+                
+                <div style="background-color: rgba(82, 196, 26, 0.1); border-radius: var(--border-radius); padding: 20px;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-check-circle" style="color: var(--accent-color); margin-right: 10px;"></i> How to Reduce Drag:</h4>
+                    <ul style="font-size: 1.1em; margin: 10px 0 0 20px;">
+                        <li>Use a pointed nose cone</li>
+                        <li>Keep the rocket smooth and streamlined</li>
+                        <li>Minimise surface area facing the airflow</li>
+                        <li>Ensure fins are properly aligned</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Centre of Gravity -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">4</div>
+                    <h3>Centre of Gravity (CG) <i class="fas fa-dot-circle" style="margin-left: 15px; color: var(--accent-color);"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;">The <strong>centre of gravity (CG)</strong> is the point where all of the rocket's weight is balanced. If you could balance the rocket on your finger, this is where you'd place it.</p>
+                
+                <div class="two-column-grid">
+                    <div>
+                        <h4><i class="fas fa-ruler" style="color: var(--accent-color); margin-right: 10px;"></i> Finding the CG</h4>
+                        <p style="font-size: 1.1em;">You can find the centre of gravity by balancing your rocket horizontally on your finger or the edge of a ruler. The point where it balances is the CG.</p>
+                        
+                        <div style="background-color: rgba(24, 144, 255, 0.1); padding: 15px; border-radius: var(--border-radius); margin-top: 15px;">
+                            <p style="margin: 0;"><strong>Important:</strong> The CG changes as fuel burns! A rocket's CG moves forward as fuel is used up.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="background-color: rgba(0,0,0,0.05); padding: 30px; border-radius: var(--border-radius);">
+                            <div style="font-size: 4em; margin-bottom: 15px;">⚖️</div>
+                            <p style="font-size: 1.1em; margin: 0;">The CG is usually located in the lower half of the rocket, where most of the mass (engine and fuel) is concentrated.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Centre of Pressure -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">5</div>
+                    <h3>Centre of Pressure (CP) <i class="fas fa-compress-arrows-alt" style="margin-left: 15px; color: var(--accent-color);"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;">The <strong>centre of pressure (CP)</strong> is the point where all the aerodynamic forces (like drag and lift) act on the rocket. It's determined by the rocket's shape, especially the fins and nose cone.</p>
+                
+                <div style="background-color: rgba(82, 196, 26, 0.1); border-radius: var(--border-radius); padding: 25px; margin: 20px 0;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-star" style="color: var(--accent-color); margin-right: 10px;"></i> The Golden Rule of Rocket Stability</h4>
+                    <p style="font-size: 1.2em; margin: 0; text-align: center; font-weight: 600;">The CP must be BEHIND (below) the CG for stable flight!</p>
+                    
+                    <div style="text-align: center; margin: 25px 0;">
+                        <img src="https://lh5.googleusercontent.com/proxy/ApdQ1_l6R2IuFbsfnVwqZNgRUj0plbtIsQLGbZClnu5UKLhfbM_ZAV8A4o_Ko1dvArnLxNhL3lKHgsumkhILOYeonZGKbM8ugAVpYLpY24MN3SI-fS4" alt="Rocket Stability Diagram" style="max-width: 600px; width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 15px; border-radius: var(--border-radius); border: 2px solid var(--accent-color);">
+                            <h5 style="color: var(--accent-color); margin-top: 0;"><i class="fas fa-check-circle"></i> STABLE</h5>
+                            <p style="margin: 0; font-size: 1.1em;">CP is below CG<br>Rocket flies straight ✓</p>
+                        </div>
+                        
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 15px; border-radius: var(--border-radius); border: 2px solid #ff4d4f;">
+                            <h5 style="color: #ff4d4f; margin-top: 0;"><i class="fas fa-times-circle"></i> UNSTABLE</h5>
+                            <p style="margin: 0; font-size: 1.1em;">CP is above CG<br>Rocket tumbles ✗</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background-color: rgba(0,0,0,0.05); border-radius: var(--border-radius); padding: 20px;">
+                    <p style="margin: 0; font-size: 1.1em;"><i class="fas fa-lightbulb" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Think of it like this:</strong> Imagine throwing a dart. The heavy tip (CG) is at the front, and the feathers (which create the CP) are at the back. This keeps the dart flying straight!</p>
+                </div>
+            </div>
+            
+            <!-- Recovery System -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">6</div>
+                    <h3>Recovery System <i class="fas fa-parachute-box" style="margin-left: 15px; color: var(--accent-color);"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;">The <strong>recovery system</strong> is what brings your rocket safely back to the ground after launch. Without it, the rocket would crash and be destroyed!</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div style="background-color: rgba(24, 144, 255, 0.1); padding: 20px; border-radius: var(--border-radius);">
+                        <h4><i class="fas fa-parachute-box" style="color: #1890ff; margin-right: 10px;"></i> Parachute</h4>
+                        <p style="font-size: 1.1em; margin: 10px 0 0 0;">The most common recovery system. Deploys at apogee and slows the rocket's descent.</p>
+                    </div>
+                    
+                    <div style="background-color: rgba(82, 196, 26, 0.1); padding: 20px; border-radius: var(--border-radius);">
+                        <h4><i class="fas fa-ribbon" style="color: #52c41a; margin-right: 10px;"></i> Streamer</h4>
+                        <p style="font-size: 1.1em; margin: 10px 0 0 0;">A long ribbon that creates drag. Used for lighter rockets or when you want faster descent.</p>
+                    </div>
+                    
+                    <div style="background-color: rgba(250, 140, 22, 0.1); padding: 20px; border-radius: var(--border-radius);">
+                        <h4><i class="fas fa-helicopter" style="color: #fa8c16; margin-right: 10px;"></i> Helicopter Recovery</h4>
+                        <p style="font-size: 1.1em; margin: 10px 0 0 0;">Fins spin like helicopter blades, providing a controlled, slow descent.</p>
+                    </div>
+                </div>
+                
+                <div style="background-color: rgba(255, 77, 79, 0.1); border-radius: var(--border-radius); padding: 20px; margin-top: 20px;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-tools" style="color: #ff4d4f; margin-right: 10px;"></i> Key Components</h4>
+                    <ul style="font-size: 1.1em; margin: 0;">
+                        <li><strong>Ejection charge:</strong> Small explosive that pushes the nose cone off</li>
+                        <li><strong>Shock cord:</strong> Strong elastic cord that connects the parts</li>
+                        <li><strong>Parachute/streamer:</strong> Creates drag to slow descent</li>
+                        <li><strong>Wadding:</strong> Fireproof material that protects the parachute from hot gases</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Thrust Curve -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">7</div>
+                    <h3>Thrust Curve <i class="fas fa-chart-area" style="margin-left: 15px; color: var(--accent-color);"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;">A <strong>thrust curve</strong> is a graph that shows how much thrust a rocket engine produces over time. It helps engineers and rocketeers understand how the engine performs throughout the burn.</p>
+                
+                <div style="text-align: center; margin: 25px 0;">
+                    <img src="https://docs.rocketpy.org/en/latest/_images/thrust_4_2.png" alt="Thrust Curve Example" style="max-width: 700px; width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: 0 4px 12px rgba(0,0,0,0.15); background-color: white; padding: 15px;">
+                </div>
+                
+                <div class="two-column-grid">
+                    <div>
+                        <h4><i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 10px;"></i> Understanding the Curve</h4>
+                        <p style="font-size: 1.1em; margin-bottom: 15px;">The thrust curve typically has three main phases:</p>
+                        <ul style="font-size: 1.1em;">
+                            <li><strong>Initial spike:</strong> Thrust jumps quickly as the engine ignites</li>
+                            <li><strong>Sustained burn:</strong> Thrust remains relatively constant as fuel burns</li>
+                            <li><strong>Tail-off:</strong> Thrust drops as fuel runs out</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4><i class="fas fa-calculator" style="color: var(--accent-color); margin-right: 10px;"></i> What It Tells Us</h4>
+                        <div style="background-color: rgba(24, 144, 255, 0.1); padding: 15px; border-radius: var(--border-radius);">
+                            <ul style="font-size: 1.1em; margin: 10px 0 0 20px;">
+                                <li><strong>Total impulse:</strong> Area under the curve (measured in Newton-seconds)</li>
+                                <li><strong>Average thrust:</strong> Typical force during burn</li>
+                                <li><strong>Peak thrust:</strong> Maximum force produced</li>
+                                <li><strong>Burn time:</strong> How long the engine fires</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background-color: rgba(82, 196, 26, 0.1); border-radius: var(--border-radius); padding: 20px; margin-top: 20px;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-lightbulb" style="color: var(--accent-color); margin-right: 10px;"></i> Why Thrust Curves Matter</h4>
+                    <p style="margin: 0; font-size: 1.1em;">Thrust curves help you choose the right motor for your rocket. A high-thrust, short-burn motor gives quick acceleration (good for heavy rockets), while a low-thrust, long-burn motor provides sustained, gentler acceleration (good for altitude records).</p>
+                </div>
+            </div>
+            
+            <!-- Apogee -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">8</div>
+                    <h3>Apogee <i class="fas fa-mountain" style="margin-left: 15px; color: var(--accent-color);"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;"><strong>Apogee</strong> is the highest point in a rocket's flight. At apogee, the rocket momentarily stops climbing before it begins to fall back to Earth. This is the critical moment when the recovery system typically deploys.</p>
+                
+                <div class="two-column-grid">
+                    <div>
+                        <h4><i class="fas fa-arrow-up" style="color: var(--accent-color); margin-right: 10px;"></i> What Happens at Apogee</h4>
+                        <ul style="font-size: 1.1em; margin-bottom: 20px;">
+                            <li><strong>Upward velocity reaches zero:</strong> The rocket stops climbing</li>
+                            <li><strong>Gravitational force takes over:</strong> Rocket begins to fall</li>
+                            <li><strong>Recovery deployment:</strong> Parachute or streamer deploys</li>
+                            <li><strong>Maximum altitude recorded:</strong> Altimeters log peak height</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <div style="background-color: rgba(24, 144, 255, 0.1); padding: 20px; border-radius: var(--border-radius); margin-bottom: 15px;">
+                            <h4 style="margin-top: 0;"><i class="fas fa-calculator" style="color: #1890ff; margin-right: 10px;"></i> Predicting Apogee</h4>
+                            <p style="margin: 0; font-size: 1.1em;">Apogee can be calculated using factors like:</p>
+                            <ul style="margin: 10px 0 0 20px; font-size: 1.1em;">
+                                <li>Total impulse of the motor</li>
+                                <li>Mass of the rocket</li>
+                                <li>Drag coefficient</li>
+                                <li>Cross-sectional area</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: rgba(0,0,0,0.05); padding: 15px; border-radius: var(--border-radius);">
+                            <p style="margin: 0;"><i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 10px;"></i> Competition rocketeers aim for specific target altitudes by carefully calculating and testing their designs to reach apogee at exactly the right height!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <img src="https://www.apogeerockets.com/images/education_pages/flight-events.jpg" alt="Rocket Flight Events Diagram" style="max-width: 800px; width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: 0 4px 12px rgba(0,0,0,0.15); background-color: white; padding: 15px;">
+                    <p style="font-size: 0.9em; margin-top: 10px; color: #666;"><i class="fas fa-info-circle" style="margin-right: 8px;"></i> The complete flight profile from launch to recovery, showing apogee at the peak</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rocket Parts Section -->
+        <section id="parts" class="tab-content dark-section">
+            <h1>ROCKET PARTS <i class="fas fa-rocket" style="margin-left: 15px;"></i></h1>
+            
+            <p style="font-size: 1.2em; margin-bottom: 30px; text-align: center; color: #333;">The physical components that make up a rocket</p>
+            
+            <!-- Nose Cone - General -->
+            <div class="card">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">1</div>
+                    <h3>Nose Cone <i class="fas fa-long-arrow-alt-up" style="margin-left: 15px;"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;">The <strong>nose cone</strong> is the pointed tip at the front of the rocket. It's the first part to push through the air, so its shape has a huge impact on how efficiently the rocket flies.</p>
+                
+                <div style="background-color: rgba(24, 144, 255, 0.1); border-radius: var(--border-radius); padding: 25px; margin: 20px 0;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-bullseye" style="color: #1890ff; margin-right: 10px;"></i> Purpose of the Nose Cone</h4>
+                    <ul style="font-size: 1.1em; margin: 0;">
+                        <li><strong>Reduces drag:</strong> A pointed shape cuts through the air more easily than a flat surface</li>
+                        <li><strong>Protects payload:</strong> Houses sensitive equipment like altimeters</li>
+                        <li><strong>Improves stability:</strong> Helps keep the rocket pointed in the right direction</li>
+                        <li><strong>Deploys recovery:</strong> Often contains the parachute and ejection mechanism</li>
+                    </ul>
+                </div>
+                
+                <div style="background-color: rgba(0,0,0,0.05); border-radius: var(--border-radius); padding: 20px;">
+                    <p style="margin: 0; font-size: 1.1em;"><i class="fas fa-lightbulb" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Design choice:</strong> Different nose cone shapes have different aerodynamic properties. More pointed shapes reduce drag but may be harder to manufacture!</p>
+                </div>
+            </div>
+            
+            <!-- Nose Cone Types -->
+            <div class="card" style="margin-top: 30px;">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">2</div>
+                    <h3>Nose Cone Shapes <i class="fas fa-shapes" style="margin-left: 15px;"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 25px; text-align: center;">Each nose cone shape has unique aerodynamic characteristics. Drag on 3D models to rotate and examine them!</p>
+                
+                <!-- Conical -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-triangle" style="color: var(--accent-color); margin-right: 10px;"></i> Conical</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">A simple cone shape, like a party hat. This is the easiest nose cone to design and build.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Very easy to manufacture</li>
+                                    <li>Good strength</li>
+                                    <li>Predictable performance</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Higher drag than curved shapes</li>
+                                    <li>Not the most aerodynamically efficient</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="conical-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Conical Nose Cone
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ogive -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-dot-circle" style="color: var(--accent-color); margin-right: 10px;"></i> Ogive</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">A smooth, curved nose cone formed by rotating an arc. This is one of the most popular choices for high-performance rockets.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Lower drag than conical</li>
+                                    <li>Excellent high-speed performance</li>
+                                    <li>Widely used in real rockets</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>More complex to manufacture</li>
+                                    <li>Requires careful design calculations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="ogive-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Ogive Nose Cone
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ellipsoid -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-egg" style="color: var(--accent-color); margin-right: 10px;"></i> Ellipsoid</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">An egg-shaped nose cone with a rounded tip. The shape is created by rotating half of an ellipse around the rocket's axis.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Very low drag at subsonic speeds</li>
+                                    <li>Smooth, gradual shape</li>
+                                    <li>Good for lower-speed rockets</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Not optimal at high speeds</li>
+                                    <li>Blunt tip creates more pressure</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="ellipsoid-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Ellipsoid Nose Cone
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Power Series -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-chart-line" style="color: var(--accent-color); margin-right: 10px;"></i> Power Series</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">A mathematically defined curve that can range from very pointed to quite blunt, depending on the power value used in the equation.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Customisable shape</li>
+                                    <li>Can optimise for specific conditions</li>
+                                    <li>Good balance of properties</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Requires mathematical calculation</li>
+                                    <li>More complex to manufacture</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="power-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Power Series Nose Cone
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Parabolic Series -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-bezier-curve" style="color: var(--accent-color); margin-right: 10px;"></i> Parabolic Series</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">A nose cone shaped like a parabola (the curve you get when you throw a ball). The shape provides a good compromise between drag and manufacturing ease.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Good low-speed performance</li>
+                                    <li>Relatively easy to manufacture</li>
+                                    <li>Moderate drag reduction</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Not the most efficient shape</li>
+                                    <li>Less common in professional rocketry</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="parabolic-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Parabolic Nose Cone
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Haack Series -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-rocket" style="color: var(--accent-color); margin-right: 10px;"></i> Haack Series</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">The most aerodynamically efficient nose cone shape, designed to minimise drag at transonic and supersonic speeds. Named after mathematician Wolfgang Haack.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Lowest possible drag</li>
+                                    <li>Best for high-speed flight</li>
+                                    <li>Used in professional rocketry</li>
+                                    <li>Optimal wave drag reduction</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Very difficult to manufacture</li>
+                                    <li>Complex mathematical calculations</li>
+                                    <li>May be overkill for model rockets</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="haack-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Haack Series Nose Cone
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Body Tube -->
+            <div class="card" style="margin-top: 30px;">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">3</div>
+                    <h3>Body Tube <i class="fas fa-grip-lines-vertical" style="margin-left: 15px;"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;">The <strong>body tube</strong> is the main cylindrical section of the rocket. It holds everything together and provides the structural framework for all other components.</p>
+                
+                <div class="two-column-grid">
+                    <div>
+                        <h4><i class="fas fa-tools" style="color: var(--accent-color); margin-right: 10px;"></i> Functions</h4>
+                        <ul style="font-size: 1.1em;">
+                            <li><strong>Structure:</strong> Holds all rocket parts in place</li>
+                            <li><strong>Housing:</strong> Contains the motor, parachute, and payload</li>
+                            <li><strong>Aerodynamics:</strong> Provides a smooth surface for airflow</li>
+                            <li><strong>Attachment point:</strong> Where fins are mounted</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4><i class="fas fa-layer-group" style="color: var(--accent-color); margin-right: 10px;"></i> Materials</h4>
+                        <div style="background-color: rgba(24, 144, 255, 0.1); padding: 15px; border-radius: var(--border-radius);">
+                            <ul style="font-size: 1.1em; margin: 10px 0 0 20px;">
+                                <li><strong>Cardboard:</strong> Light and cheap (beginner rockets)</li>
+                                <li><strong>Plastic:</strong> Durable and weather-resistant</li>
+                                <li><strong>Fibreglass:</strong> Strong and lightweight (high-performance)</li>
+                                <li><strong>Carbon fibre:</strong> Strongest and lightest (professional)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background-color: rgba(0,0,0,0.05); border-radius: var(--border-radius); padding: 20px; margin-top: 20px;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-ruler" style="color: var(--accent-color); margin-right: 10px;"></i> Important Measurements</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 15px; border-radius: var(--border-radius); text-align: center;">
+                            <p style="margin: 0; font-weight: 600;">Diameter</p>
+                            <p style="margin: 5px 0 0 0; font-size: 0.9em;">Width of the tube (e.g., 24mm, 38mm)</p>
+                        </div>
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 15px; border-radius: var(--border-radius); text-align: center;">
+                            <p style="margin: 0; font-weight: 600;">Length</p>
+                            <p style="margin: 5px 0 0 0; font-size: 0.9em;">Height of the rocket</p>
+                        </div>
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 15px; border-radius: var(--border-radius); text-align: center;">
+                            <p style="margin: 0; font-weight: 600;">Wall Thickness</p>
+                            <p style="margin: 5px 0 0 0; font-size: 0.9em;">Affects strength and weight</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payload -->
+            <div class="card" style="margin-top: 30px;">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">4</div>
+                    <h3>Payload <i class="fas fa-box" style="margin-left: 15px;"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;">The <strong>payload</strong> is whatever the rocket is designed to carry. This could be scientific instruments, cameras, experiments, or even just ballast weight for testing.</p>
+                
+                <div style="background-color: rgba(82, 196, 26, 0.1); border-radius: var(--border-radius); padding: 25px; margin: 20px 0;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-satellite" style="color: var(--accent-color); margin-right: 10px;"></i> Common Payloads in Model Rocketry</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: var(--border-radius);">
+                            <div style="font-size: 2em; text-align: center; margin-bottom: 10px;">📊</div>
+                            <h5 style="text-align: center; margin: 0 0 10px 0;">Altimeter</h5>
+                            <p style="margin: 0; font-size: 0.95em; text-align: center;">Measures altitude and flight data</p>
+                        </div>
+                        
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: var(--border-radius);">
+                            <div style="font-size: 2em; text-align: center; margin-bottom: 10px;">📷</div>
+                            <h5 style="text-align: center; margin: 0 0 10px 0;">Camera</h5>
+                            <p style="margin: 0; font-size: 0.95em; text-align: center;">Records video or photos from flight</p>
+                        </div>
+                        
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: var(--border-radius);">
+                            <div style="font-size: 2em; text-align: center; margin-bottom: 10px;">🧪</div>
+                            <h5 style="text-align: center; margin: 0 0 10px 0;">Experiment</h5>
+                            <p style="margin: 0; font-size: 0.95em; text-align: center;">Scientific tests (temperature, pressure, etc.)</p>
+                        </div>
+                        
+                        <div style="background-color: rgba(255, 255, 255, 0.7); padding: 20px; border-radius: var(--border-radius);">
+                            <div style="font-size: 2em; text-align: center; margin-bottom: 10px;">⚖️</div>
+                            <h5 style="text-align: center; margin: 0 0 10px 0;">Ballast</h5>
+                            <p style="margin: 0; font-size: 0.95em; text-align: center;">Extra weight to adjust CG position</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background-color: rgba(255, 77, 79, 0.1); border-radius: var(--border-radius); padding: 20px;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-exclamation-triangle" style="color: #ff4d4f; margin-right: 10px;"></i> Payload Considerations</h4>
+                    <ul style="font-size: 1.1em; margin: 0;">
+                        <li><strong>Weight:</strong> Heavier payloads require more powerful motors</li>
+                        <li><strong>Balance:</strong> Payload affects the rocket's centre of gravity</li>
+                        <li><strong>Protection:</strong> Fragile electronics need padding from landing impact</li>
+                        <li><strong>Space:</strong> Payload must fit inside the body tube or nose cone</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Altimeter -->
+            <div class="card" style="margin-top: 30px;">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">5</div>
+                    <h3>Altimeter <i class="fas fa-chart-line" style="margin-left: 15px;"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;">An <strong>altimeter</strong> is an electronic device that measures how high a rocket flies. It works by detecting changes in air pressure, which decreases as altitude increases.</p>
+                
+                <div class="two-column-grid">
+                    <div>
+                        <h4><i class="fas fa-cog" style="color: var(--accent-color); margin-right: 10px;"></i> How It Works</h4>
+                        <ul style="font-size: 1.1em; margin-bottom: 20px;">
+                            <li>Measures air pressure continuously during flight</li>
+                            <li>Converts pressure readings to altitude</li>
+                            <li>Records maximum altitude reached</li>
+                            <li>Some can detect when the rocket is descending</li>
+                        </ul>
+                        
+                        <h4><i class="fas fa-database" style="color: var(--accent-color); margin-right: 10px;"></i> Data Recorded</h4>
+                        <div style="background-color: rgba(24, 144, 255, 0.1); padding: 15px; border-radius: var(--border-radius);">
+                            <ul style="font-size: 1.1em; margin: 10px 0 0 20px;">
+                                <li>Maximum altitude</li>
+                                <li>Flight time</li>
+                                <li>Speed and acceleration</li>
+                                <li>Time to apogee (highest point)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="sketchfab-embed-wrapper" style="border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: 100%;"> 
+                            <iframe title="F-16 Altimeter" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/08c793f801e7455daa772df9d04934ef/embed" style="width: 100%; height: 400px;"> </iframe> 
+                            <p style="font-size: 11px; font-weight: normal; margin: 8px 5px; color: #4A4A4A;"> 
+                                <a href="https://sketchfab.com/3d-models/f-16-altimeter-08c793f801e7455daa772df9d04934ef?utm_medium=embed&utm_campaign=share-popup&utm_content=08c793f801e7455daa772df9d04934ef" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> F-16 Altimeter </a> by <a href="https://sketchfab.com/Cesar.Ferrolho?utm_medium=embed&utm_campaign=share-popup&utm_content=08c793f801e7455daa772df9d04934ef" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Cesar.Ferrolho </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=08c793f801e7455daa772df9d04934ef" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background-color: rgba(82, 196, 26, 0.1); border-radius: var(--border-radius); padding: 15px; margin-top: 20px;">
+                    <p style="margin: 0;"><i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 10px;"></i> Advanced altimeters can also trigger the deployment of recovery systems at specific altitudes!</p>
+                </div>
+            </div>
+            
+            <!-- Fins - General -->
+            <div class="card" style="margin-top: 30px;">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">6</div>
+                    <h3>Fins <i class="fas fa-sort-up" style="margin-left: 15px;"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 15px;"><strong>Fins</strong> are the flat surfaces attached to the bottom of the rocket. They're one of the most important parts for keeping your rocket flying straight!</p>
+                
+                <div style="background-color: rgba(24, 144, 255, 0.1); border-radius: var(--border-radius); padding: 25px; margin: 20px 0;">
+                    <h4 style="margin-top: 0;"><i class="fas fa-bullseye" style="color: #1890ff; margin-right: 10px;"></i> How Fins Work</h4>
+                    <p style="font-size: 1.1em; margin-bottom: 15px;">Fins create the <strong>centre of pressure (CP)</strong> that keeps your rocket stable. They work like the feathers on an arrow:</p>
+                    <ul style="font-size: 1.1em; margin: 0;">
+                        <li>If the rocket tilts, the fins catch more air on one side</li>
+                        <li>This creates a correcting force that straightens the rocket</li>
+                        <li>Larger fins move the CP further back, increasing stability</li>
+                        <li>Most rockets have 3 or 4 fins for balanced control</li>
+                    </ul>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div style="background-color: rgba(82, 196, 26, 0.1); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid var(--accent-color);">
+                        <h4 style="margin-top: 0;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Good Fin Design</h4>
+                        <ul style="margin: 0;">
+                            <li>Rigid and firmly attached</li>
+                            <li>Symmetrically placed</li>
+                            <li>Large enough for stability</li>
+                            <li>Smooth, streamlined edges</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background-color: rgba(255, 77, 79, 0.1); padding: 20px; border-radius: var(--border-radius); border-left: 4px solid #ff4d4f;">
+                        <h4 style="margin-top: 0;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Poor Fin Design</h4>
+                        <ul style="margin: 0;">
+                            <li>Wobbly or loose fins</li>
+                            <li>Uneven or misaligned</li>
+                            <li>Too small for the rocket</li>
+                            <li>Rough or damaged edges</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fin Shapes -->
+            <div class="card" style="margin-top: 30px;">
+                <div class="element-header" style="margin: -35px -40px 30px -40px; padding: 25px 35px;">
+                    <div class="element-number">7</div>
+                    <h3>Fin Shapes <i class="fas fa-shapes" style="margin-left: 15px;"></i></h3>
+                </div>
+                
+                <p style="font-size: 1.2em; margin-bottom: 25px; text-align: center;">Different fin shapes offer different advantages. Drag on 3D models to rotate and examine them!</p>
+                
+                <!-- Trapezoidal -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-clone" style="color: var(--accent-color); margin-right: 10px;"></i> Trapezoidal</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">A classic fin shape that looks like a trapezoid (four-sided shape with one pair of parallel sides). This is the most common fin design in model rocketry.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Easy to design and cut</li>
+                                    <li>Good stability</li>
+                                    <li>Efficient use of material</li>
+                                    <li>Strong structural design</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Sharp corners can create small vortices</li>
+                                    <li>Slightly more drag than swept shapes</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(0,0,0,0.05); padding: 15px; border-radius: var(--border-radius); margin-top: 15px;">
+                                <p style="margin: 0;"><i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Best for:</strong> General-purpose rockets, beginners, and most model rocket applications</p>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="trapezoidal-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Trapezoidal Fin
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Elliptical -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-circle" style="color: var(--accent-color); margin-right: 10px;"></i> Elliptical</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">A fin with smooth, curved edges that form an ellipse or oval shape. This aerodynamic design is often used in high-performance rockets.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Lowest drag of any fin shape</li>
+                                    <li>Smooth airflow around edges</li>
+                                    <li>Excellent high-speed performance</li>
+                                    <li>Reduces turbulence</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Harder to cut accurately</li>
+                                    <li>Requires more material</li>
+                                    <li>More difficult to attach to body tube</li>
+                                    <li>May be weaker at the tips</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(0,0,0,0.05); padding: 15px; border-radius: var(--border-radius); margin-top: 15px;">
+                                <p style="margin: 0;"><i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Best for:</strong> High-performance rockets, speed records, and when drag reduction is critical</p>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="elliptical-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Elliptical Fin
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tube Fins -->
+                <div style="background-color: rgba(0,0,0,0.03); border-radius: var(--border-radius); padding: 30px; margin-bottom: 25px; border: 1px solid rgba(0,0,0,0.1);">
+                    <h4 style="color: #333; margin-top: 0; font-size: 1.5em; margin-bottom: 20px;"><i class="fas fa-grip-lines-vertical" style="color: var(--accent-color); margin-right: 10px;"></i> Tube Fins</h4>
+                    
+                    <div class="two-column-grid">
+                        <div>
+                            <p style="font-size: 1.1em; margin-bottom: 15px;">Tube fins are hollow cylindrical tubes mounted at the rear of the rocket, perpendicular to the body. They provide an alternative to traditional flat fins and can reduce drag while maintaining stability.</p>
+                            
+                            <div style="background-color: rgba(82, 196, 26, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(82, 196, 26, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Advantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Lower drag than flat fins at high speeds</li>
+                                    <li>Can hold components (cameras, electronics)</li>
+                                    <li>Strong structural design</li>
+                                    <li>Creates smooth airflow</li>
+                                    <li>Unique, modern appearance</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(255, 77, 79, 0.1); padding: 15px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(255, 77, 79, 0.3);">
+                                <p style="margin: 0; font-weight: 600;"><i class="fas fa-times" style="color: #ff4d4f; margin-right: 10px;"></i> Disadvantages:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>More difficult to manufacture</li>
+                                    <li>Heavier than flat fins</li>
+                                    <li>Harder to attach to body tube</li>
+                                    <li>More complex design calculations</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(0,0,0,0.05); padding: 15px; border-radius: var(--border-radius);">
+                                <p style="margin: 0;"><i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Best for:</strong> High-performance rockets, advanced builders, and designs where internal space for electronics is valuable</p>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div class="model-viewer" id="tube-viewer" style="width: 100%; height: 400px; background-color: rgba(0,0,0,0.1); border-radius: var(--border-radius); position: relative;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 1.1em;">
+                                    <i class="fas fa-cube" style="font-size: 3em; display: block; margin-bottom: 10px;"></i>
+                                    3D Model: Tube Fins
+                                </div>
+                            </div>
+                            <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.7);"><i class="fas fa-mouse"></i> Click and drag to rotate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const tab = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and tabs
+                    document.querySelectorAll('.tab-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Add active class to selected button and tab
+                    this.classList.add('active');
+                    document.getElementById(tab).classList.add('active');
+                });
+            });
+            
+            // Initialize 3D models when the parts tab is active
+            const partsButton = document.querySelector('[data-tab="parts"]');
+            partsButton.addEventListener('click', function() {
+                // Delay to ensure tab is visible
+                setTimeout(initialize3DModels, 100);
+            });
+        });
+        
+        // Three.js 3D model initialization
+        function initialize3DModels() {
+            const modelViewers = [
+                { id: 'conical-viewer', model: '3d models/conical-cone.obj' },
+                { id: 'ogive-viewer', model: '3d models/ogive-cone.obj' },
+                { id: 'ellipsoid-viewer', model: '3d models/elipsoid-cone.obj' },
+                { id: 'power-viewer', model: '3d models/power-series-cone.obj' },
+                { id: 'parabolic-viewer', model: '3d models/parabolic-cone.obj' },
+                { id: 'haack-viewer', model: '3d models/haack-cone.obj' },
+                { id: 'trapezoidal-viewer', model: '3d models/trapezoidal-fins.obj' },
+                { id: 'elliptical-viewer', model: '3d models/eliptical-fins.obj' },
+                { id: 'tube-viewer', model: '3d models/tube-fins.obj' }
+            ];
+            
+            modelViewers.forEach(viewer => {
+                createModelViewer(viewer.id, viewer.model);
+            });
+        }
+        
+        function createModelViewer(containerId, modelPath) {
+            const container = document.getElementById(containerId);
+            if (!container || container.querySelector('canvas')) return; // Already initialized
+            
+            // Scene setup
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x1a1a1a);
+            
+            // Camera setup
+            const camera = new THREE.PerspectiveCamera(
+                45,
+                container.clientWidth / container.clientHeight,
+                0.1,
+                1000
+            );
+            camera.position.z = 5;
+            
+            // Renderer setup
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.innerHTML = ''; // Clear placeholder
+            container.appendChild(renderer.domElement);
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+            
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+            directionalLight2.position.set(-1, -1, -1);
+            scene.add(directionalLight2);
+            
+            // Load the OBJ model
+            const loader = new THREE.OBJLoader();
+            
+            loader.load(
+                modelPath,
+                function (object) {
+                    // Model loaded successfully
+                    // Apply material to all meshes in the object
+                    object.traverse(function (child) {
+                        if (child instanceof THREE.Mesh) {
+                            child.material = new THREE.MeshStandardMaterial({
+                                color: 0x52c41a,
+                                metalness: 0.3,
+                                roughness: 0.6
+                            });
+                        }
+                    });
+                    
+                    // Center and scale the object
+                    const box = new THREE.Box3().setFromObject(object);
+                    const center = box.getCenter(new THREE.Vector3());
+                    const size = box.getSize(new THREE.Vector3());
+                    
+                    // Scale to fit in view
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    const scale = 3 / maxDim;
+                    object.scale.multiplyScalar(scale);
+                    
+                    // Center the object
+                    object.position.sub(center.multiplyScalar(scale));
+                    
+                    scene.add(object);
+                    mesh = object;
+                },
+                function (xhr) {
+                    // Loading progress
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                },
+                function (error) {
+                    // Error loading - create placeholder
+                    console.error('Error loading model:', error);
+                    let geometry;
+                    if (containerId.includes('cone')) {
+                        geometry = new THREE.ConeGeometry(1, 3, 32);
+                    } else {
+                        const shape = new THREE.Shape();
+                        shape.moveTo(0, 0);
+                        shape.lineTo(0, 2);
+                        shape.lineTo(2, 1.5);
+                        shape.lineTo(2, 0);
+                        shape.lineTo(0, 0);
+                        geometry = new THREE.ExtrudeGeometry(shape, {
+                            depth: 0.1,
+                            bevelEnabled: false
+                        });
+                    }
+                    const material = new THREE.MeshStandardMaterial({ 
+                        color: 0x52c41a,
+                        metalness: 0.3,
+                        roughness: 0.6
+                    });
+                    const fallbackMesh = new THREE.Mesh(geometry, material);
+                    scene.add(fallbackMesh);
+                    mesh = fallbackMesh;
+                }
+            );
+            
+            // Initialize mesh variable for rotation
+            let mesh = null;
+            
+            // Mouse interaction variables
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+            
+            // Mouse events
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+            
+            container.addEventListener('mousemove', (e) => {
+                if (isDragging && mesh) {
+                    const deltaX = e.clientX - previousMousePosition.x;
+                    const deltaY = e.clientY - previousMousePosition.y;
+                    
+                    mesh.rotation.y += deltaX * 0.01;
+                    mesh.rotation.x += deltaY * 0.01;
+                    
+                    previousMousePosition = { x: e.clientX, y: e.clientY };
+                }
+            });
+            
+            container.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+            
+            // Touch events for mobile
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                previousMousePosition = { 
+                    x: e.touches[0].clientX, 
+                    y: e.touches[0].clientY 
+                };
+            });
+            
+            container.addEventListener('touchmove', (e) => {
+                if (isDragging && mesh) {
+                    const deltaX = e.touches[0].clientX - previousMousePosition.x;
+                    const deltaY = e.touches[0].clientY - previousMousePosition.y;
+                    
+                    mesh.rotation.y += deltaX * 0.01;
+                    mesh.rotation.x += deltaY * 0.01;
+                    
+                    previousMousePosition = { 
+                        x: e.touches[0].clientX, 
+                        y: e.touches[0].clientY 
+                    };
+                }
+            });
+            
+            container.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Slow auto-rotation when not dragging
+                if (!isDragging && mesh) {
+                    mesh.rotation.y += 0.002;
+                }
+                
+                renderer.render(scene, camera);
+            }
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                
+                renderer.setSize(width, height);
+            });
+        }
+    </script>
+
+    <style>
+        .model-viewer {
+            cursor: grab;
+        }
+        
+        .model-viewer:active {
+            cursor: grabbing;
+        }
+        
+        .model-viewer canvas {
+            border-radius: var(--border-radius);
+        }
+    </style>
+</body>
+</html>
