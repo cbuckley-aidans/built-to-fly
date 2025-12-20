@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editing Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="tutorial-container">
+        <!-- Left Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="sidebar-logo">VIDEO<br>EDITING</div>
+            <div class="step-button active" data-step="0" data-tooltip="Introduction">
+                <i class="fas fa-list-ol"></i>
+            </div>
+            <div class="step-button" data-step="1" data-tooltip="Getting Started">
+                <span>1</span>
+            </div>
+            <div class="step-button" data-step="2" data-tooltip="Importing Media">
+                <span>2</span>
+            </div>
+            <div class="step-button" data-step="3" data-tooltip="Trimming & Cutting">
+                <span>3</span>
+            </div>
+            <div class="step-button" data-step="4" data-tooltip="Transitions">
+                <span>4</span>
+            </div>
+            <div class="step-button" data-step="5" data-tooltip="Graphics & Framing">
+                <span>5</span>
+            </div>
+            <div class="step-button" data-step="6" data-tooltip="Adding Text">
+                <span>6</span>
+            </div>
+            <div class="step-button" data-step="7" data-tooltip="Green Screens">
+                <span>7</span>
+            </div>
+            <div class="step-button" data-step="8" data-tooltip="Music & SFX">
+                <span>8</span>
+            </div>
+        </div>
+
+        <!-- Middle Instructions Panel -->
+        <div class="instructions-panel">
+            <h1 id="current-step-title">Introduction</h1>
+            
+            <div id="step-instructions">
+                <!-- Will be populated by JavaScript -->
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation">
+                <button id="prevButton" class="nav-button" disabled><i class="fas fa-arrow-left"></i> Previous</button>
+                <button id="nextButton" class="nav-button">Next <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-text">Progress: <span id="progress-percentage">0%</span></div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="footer">
+                Made with <span style="color: var(--accent-color);">♥</span> by <span id="creator-name">Buckley</span>
+            </div>
+        </div>
+
+        <!-- Right Content Display Area -->
+        <div class="content-display">
+            <div class="card">
+                <h2 id="content-title">Introduction</h2>
+                <div id="media-content">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for viewing images -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage" class="modal-content">
+    </div>
+
+    <script>
+        // Tutorial content configuration
+        const stepTitles = [
+            "Introduction",
+            "Getting Started & Workspace Setup",
+            "Importing & Organising Media",
+            "Basic Editing: Trimming & Cutting",
+            "Adding Transitions",
+            "Managing Graphics & Framing Footage",
+            "Adding and Styling Text",
+            "Green Screen (Ultra Key)",
+            "Music and Sound Effects"
+        ];
+
+        const stepInstructions = [
+            // Step 0: Introduction
+            `<h3>Learning Intentions and Success Criteria</h3>
+            
+            <div class="card">
+                <p><strong>Learning Intentions:</strong></p>
+                <ol class="steps-list">
+                    <li>Learn the fundamentals of video editing in Adobe Premiere Pro</li>
+                    <li>Master essential editing techniques including cutting, transitions, and effects</li>
+                    <li>Understand how to organise and manage video projects efficiently</li>
+                </ol>
+            
+                <p><strong>Success Criteria:</strong></p>
+                <ol class="steps-list">
+                    <li>Successfully create and set up a new video editing project</li>
+                    <li>Import, organise, and edit video footage with confidence</li>
+                    <li>Apply transitions, effects, text, and audio to create polished video content</li>
+                </ol>
+            </div>`,
+            
+            // Step 1: Getting Started
+            `<h3>Getting Started & Workspace Setup</h3>
+            <p>Learn how to create a new project and set up your workspace for efficient video editing.</p>
+            
+            <div class="card">
+                <h4>Creating Your Project:</h4>
+                <ol class="steps-list">
+                    <li>Click the <strong>New Project</strong> button on the home screen</li>
+                    <li>Type a name in the <strong>Project Name</strong> field</li>
+                    <li>Click <strong>Browse</strong> to choose a save location (OneDrive is recommended)</li>
+                    <li>Check the <strong>Skip import mode</strong> box and click <strong>Create</strong></li>
+                </ol>
+                
+                <h4>Setting Up Your Workspace:</h4>
+                <ol class="steps-list">
+                    <li>Go to the top menu, select <strong>Window > Workspaces > Essentials</strong></li>
+                    <li>This layout provides the most efficient arrangement for basic editing tasks</li>
+                </ol>
+            </div>`,
+            
+            // Step 2: Importing Media
+            `<h3>Importing & Organising Media</h3>
+            <p>Organise your footage before importing to keep your project clean and efficient.</p>
+            
+            <div class="card">
+                <h4>Preparing Your Files:</h4>
+                <ol class="steps-list">
+                    <li>In your computer's folder, right-click and rename your clips to descriptive names before importing</li>
+                    <li>This makes it easier to find specific clips later in your project</li>
+                </ol>
+                
+                <h4>Importing Methods:</h4>
+                <ol class="steps-list">
+                    <li><strong>Method 1:</strong> Select your files in the Windows folder, then click and drag them directly into the Project Panel in Premiere</li>
+                    <li><strong>Method 2:</strong> Click the blue <strong>Import Media</strong> button</li>
+                </ol>
+                
+                <h4>Creating Bins (Folders):</h4>
+                <ol class="steps-list">
+                    <li>Click the <strong>New Bin</strong> icon (folder icon) at the bottom of the Project panel</li>
+                    <li>Type a name for the bin (e.g., "Graphics and Images")</li>
+                    <li>Drag and drop your clips into the appropriate bin</li>
+                    <li>Use the <strong>Back Arrow</strong> button in the Project panel to exit a bin and return to the main folder</li>
+                </ol>
+            </div>`,
+            
+            // Step 3: Basic Editing
+            `<h3>Basic Editing: Trimming & Cutting</h3>
+            <p>Master the fundamental techniques for editing your video clips.</p>
+            
+            <div class="card">
+                <h4>Working with the Timeline:</h4>
+                <ol class="steps-list">
+                    <li><strong>Add to Timeline:</strong> Click and drag a clip from the Project panel onto the Timeline</li>
+                    <li><strong>Playback:</strong> Press the <strong>Space bar</strong> to start and stop the video</li>
+                    <li><strong>Navigation:</strong> Click and drag the Playhead (blue vertical line) to scrub through your footage</li>
+                </ol>
+                
+                <h4>Simple Trimming:</h4>
+                <ol class="steps-list">
+                    <li>Click the clip to select it</li>
+                    <li>Hover over the start or end edge until the cursor changes</li>
+                    <li>Click and drag to shorten or lengthen the clip</li>
+                </ol>
+                
+                <h4>The Razor Tool (Cutting):</h4>
+                <ol class="steps-list">
+                    <li>Press <strong>C</strong> on your keyboard to select the Razor Tool</li>
+                    <li>Click anywhere on a clip to split it into two pieces</li>
+                    <li>Press <strong>V</strong> to switch back to the Selection Tool (regular mouse cursor)</li>
+                </ol>
+                
+                <h4>Managing Clips:</h4>
+                <ol class="steps-list">
+                    <li><strong>Moving Clips:</strong> Click and drag clips left or right on the timeline to change their position</li>
+                    <li><strong>Deleting Clips:</strong> Select a clip and press <strong>Backspace</strong> or <strong>Delete</strong></li>
+                    <li><strong>Closing Gaps:</strong> Drag clips until they touch. They will "snap" together to ensure there is no black screen between shots</li>
+                    <li><strong>Zooming:</strong> Use the slider bar at the bottom of the timeline to zoom in for detail or out to see your whole project</li>
+                </ol>
+            </div>`,
+            
+            // Step 4: Transitions
+            `<h3>Adding Transitions</h3>
+            <p>Create smooth transitions between clips to enhance your video flow.</p>
+            
+            <div class="card">
+                <h4>Quick Default Transition:</h4>
+                <ol class="steps-list">
+                    <li>Right-click the edge where two clips meet</li>
+                    <li>Select <strong>Apply Default Transitions</strong></li>
+                    <li>Click and drag the edges of the transition effect box in the timeline to make it longer or shorter</li>
+                </ol>
+                
+                <h4>Finding More Transitions:</h4>
+                <ol class="steps-list">
+                    <li>Open the <strong>Effects</strong> panel (Click the <strong>>></strong> icon if it's hidden, or go to <strong>Window > Effects</strong>)</li>
+                    <li>Navigate to <strong>Video Transitions</strong> and open a folder (e.g., Dissolve)</li>
+                    <li>Browse through the available transition effects</li>
+                </ol>
+                
+                <h4>Applying Custom Transitions:</h4>
+                <ol class="steps-list">
+                    <li>Click, hold, and drag your chosen transition (like "Dip to Black") directly onto the cut between two clips</li>
+                    <li>Adjust the duration by dragging the edges of the transition box</li>
+                </ol>
+            </div>`,
+            
+            // Step 5: Graphics
+            `<h3>Managing Graphics & Framing Footage</h3>
+            <p>Learn how to position and resize graphics and images in your video.</p>
+            
+            <div class="card">
+                <h4>Working with Graphics:</h4>
+                <ol class="steps-list">
+                    <li><strong>Import Graphics:</strong> Drag image files from your project bin directly onto a track in the timeline</li>
+                    <li><strong>Select Tool:</strong> Press <strong>V</strong> to switch to the Selection tool</li>
+                </ol>
+                
+                <h4>Adjusting Position and Size:</h4>
+                <ol class="steps-list">
+                    <li>Double-click the graphic in the Program (Preview) panel</li>
+                    <li><strong>Position:</strong> Click and hold the image to drag it to a new position</li>
+                    <li><strong>Resize/Crop:</strong> While the graphic is selected in the Preview panel, click and drag the corner handles to scale the image or adjust its framing</li>
+                </ol>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i> Tip</div>
+                <p>Hold Shift while dragging corner handles to maintain the aspect ratio of your image.</p>
+            </div>`,
+            
+            // Step 6: Text
+            `<h3>Adding and Styling Text</h3>
+            <p>Create and customise text overlays to enhance your video content.</p>
+            
+            <div class="card">
+                <h4>Creating Text:</h4>
+                <ol class="steps-list">
+                    <li>Press <strong>T</strong> to activate the Type tool</li>
+                    <li>Click an empty space in your timeline to ensure no clips are selected</li>
+                    <li>Click anywhere inside the Program (Preview) panel and type your message</li>
+                </ol>
+                
+                <h4>Customising Text Appearance:</h4>
+                <ol class="steps-list">
+                    <li>Use the <strong>Properties</strong> panel on the right to adjust:
+                        <ul>
+                            <li><strong>Font & Size:</strong> Change the typeface or use the slider to change the size</li>
+                            <li><strong>Alignment:</strong> Centre or justify your text</li>
+                            <li><strong>Appearance:</strong> Check the boxes for Fill, Stroke, Background, or Shadow to change colours and add depth</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>`,
+            
+            // Step 7: Green Screen
+            `<h3>Green Screen (Ultra Key)</h3>
+            <p>Remove green screen backgrounds and composite subjects into new environments.</p>
+            
+            <div class="card">
+                <h4>Preparing the Timeline:</h4>
+                <ol class="steps-list">
+                    <li><strong>Vertical Zoom:</strong> If you have many layers, use the scrollbar on the far right of the timeline to zoom out vertically so you can see all your tracks</li>
+                    <li><strong>Layering:</strong> Drag your green screen footage onto the top-most track (e.g., V3). Think of your timeline like a cake; the top layer is what sits in front</li>
+                </ol>
+                
+                <h4>Applying the Effect:</h4>
+                <ol class="steps-list">
+                    <li>Click the double arrow <strong>>></strong> in the Project window and select <strong>Effects</strong></li>
+                    <li>Type "key" into the search bar</li>
+                    <li>Find the <strong>Ultra Key</strong> effect under <strong>Video Effects > Keying</strong></li>
+                    <li>Drag and drop this effect directly onto your green screen clip in the timeline</li>
+                </ol>
+                
+                <h4>Removing the Green Background:</h4>
+                <ol class="steps-list">
+                    <li>With the clip selected, go to the <strong>Effect Controls</strong> panel (usually in the top left area)</li>
+                    <li>Find the <strong>Key Colour</strong> section under Ultra Key and click the <strong>Eyedropper</strong> tool</li>
+                    <li>Click on the brightest/clearest green area in your video preview window. The green will disappear instantly</li>
+                </ol>
+                
+                <h4>Final Adjustments:</h4>
+                <ol class="steps-list">
+                    <li>Ensure the Selection Tool (<strong>V</strong>) is active</li>
+                    <li>Double-click the subject in the preview window to bring up a bounding box</li>
+                    <li>Drag the corners to resize or click and drag to move the subject into position</li>
+                </ol>
+            </div>`,
+            
+            // Step 8: Music & SFX
+            `<h3>Music and Sound Effects</h3>
+            <p>Add and edit audio to bring your video to life.</p>
+            
+            <div class="card">
+                <h4>Importing and Placing Audio:</h4>
+                <ol class="steps-list">
+                    <li><strong>Import:</strong> Drag your audio file (e.g., .mp3) from your computer folder directly into the Project Panel</li>
+                    <li><strong>Add to Timeline:</strong> Drag the audio clip from the Project Panel onto the Timeline</li>
+                    <li><strong>Note:</strong> Audio clips must be placed on the lower tracks (labelled A1, A2, etc.), which are specifically for sound</li>
+                </ol>
+                
+                <h4>Cutting and Editing Audio:</h4>
+                <ol class="steps-list">
+                    <li><strong>Select Razor Tool:</strong> Press <strong>C</strong> on your keyboard or select the Razor icon from the toolbar</li>
+                    <li><strong>Cut:</strong> Click on the audio clip at the exact point where you want to make a split</li>
+                    <li><strong>Selection Tool:</strong> Press <strong>V</strong> to switch back to the standard selection tool to move or delete clips</li>
+                </ol>
+                
+                <h4>Adjusting Volume and Fades:</h4>
+                <ol class="steps-list">
+                    <li><strong>Change Volume:</strong> Look for the horizontal grey bar running through the middle of the audio clip. Click and drag it up to increase volume or down to decrease it</li>
+                    <li><strong>Create Fades:</strong> Click and drag the small square icons at the very beginning or end of the clip to create a fade-in or fade-out</li>
+                    <li><strong>Adjust Fade Curve:</strong> While dragging the fade handle, move your mouse up or down to change the "curve" (how quickly or slowly the sound fades)</li>
+                </ol>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i> Audio Tip</div>
+                <p>Use fades at the beginning and end of audio clips to avoid abrupt starts and stops that can sound jarring.</p>
+            </div>`
+        ];
+
+        const stepMedia = [
+            // Step 0: Introduction
+            `<div class="alert-box alert-info">
+                <p><strong>Video Editing Tutorial Series</strong></p>
+                <p>This comprehensive tutorial series will guide you through the essential skills needed for video editing in Adobe Premiere Pro. From setting up your workspace to adding advanced effects, you'll learn everything you need to create professional-quality videos.</p>
+            </div>`,
+            
+            // Step 1: Getting Started
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG8AN_Br14/5lByY98JMnHWlxF6QH9dHA/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>`,
+            
+            // Step 2: Importing Media
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG8AIlerEY/eRq_wW3uvQDNlb0kjLFsvg/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>`,
+            
+            // Step 3: Basic Editing
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG8ALIplUk/Hh851UvSBjZ3Gh0MXB6rIg/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>`,
+            
+            // Step 4: Transitions
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG8ACxuVVk/taU6NqaUnhkVA6FRd-3Eyg/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>`,
+            
+            // Step 5: Graphics
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG8AJIWNbg/5wot0sdmD8CqzUWR84q7KQ/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>`,
+            
+            // Step 6: Text
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG8AJ86pEo/vt6_yPwKPLLEpYB_Q7UfWA/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>`,
+            
+            // Step 7: Green Screen
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG8APLcTJY/ZDtjfEUegLrMIw_FC0EYhQ/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>`,
+            
+            // Step 8: Music & SFX
+            `<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG8AA_N1Cg/aJ8h9BGxTgyhcOYspAPExw/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>`
+        ];
+
+        // Current step tracking
+        let currentStep = 0;
+        const totalSteps = stepInstructions.length;
+
+        // DOM Elements
+        const stepButtons = document.querySelectorAll('.step-button');
+        const stepTitleEl = document.getElementById('current-step-title');
+        const instructionsPanel = document.getElementById('step-instructions');
+        const mediaContent = document.getElementById('media-content');
+        const contentTitle = document.getElementById('content-title');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const progressBar = document.querySelector('.progress');
+        const progressPercentage = document.getElementById('progress-percentage');
+
+        // Image modal
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalClose = document.querySelector('.modal-close');
+
+        // Initialize the tutorial
+        function showStep(step) {
+            // Update active step button
+            stepButtons.forEach((button, index) => {
+                button.classList.toggle('active', index === step);
+            });
+
+            // Update step title
+            stepTitleEl.textContent = stepTitles[step];
+            contentTitle.textContent = stepTitles[step];
+
+            // Update content
+            instructionsPanel.innerHTML = stepInstructions[step];
+            mediaContent.innerHTML = stepMedia[step];
+
+            // Update navigation buttons
+            prevButton.disabled = step === 0;
+            nextButton.style.display = step === totalSteps - 1 ? 'none' : 'flex';
+            
+            // Update progress
+            const progress = Math.round(((step + 1) / totalSteps) * 100);
+            progressBar.style.width = `${progress}%`;
+            progressPercentage.textContent = `${progress}%`;
+            
+            currentStep = step;
+        }
+
+        // Simple tooltip implementation
+        function setupTooltips() {
+            // Remove any existing tooltips
+            const existingTooltips = document.querySelectorAll('.tooltip');
+            existingTooltips.forEach(t => t.remove());
+            
+            // Create new tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            document.body.appendChild(tooltip);
+            
+            // Add event listeners to all step buttons
+            const stepButtons = document.querySelectorAll('.step-button');
+            stepButtons.forEach(button => {
+                const tooltipText = button.getAttribute('data-tooltip');
+                if (!tooltipText) return;
+                
+                // On mouse enter
+                button.addEventListener('mouseenter', () => {
+                    // Set tooltip text
+                    tooltip.textContent = tooltipText;
+                    
+                    // Position tooltip based on viewport width
+                    const rect = button.getBoundingClientRect();
+                    if (window.innerWidth <= 1024) {
+                        // Position below on mobile
+                        tooltip.className = 'tooltip bottom';
+                        tooltip.style.top = `${rect.bottom + 10}px`;
+                        tooltip.style.left = `${rect.left + rect.width/2}px`;
+                        tooltip.style.transform = 'translateX(-50%)';
+                    } else {
+                        // Position to the right on desktop
+                        tooltip.className = 'tooltip right';
+                        tooltip.style.top = `${rect.top + rect.height/2}px`;
+                        tooltip.style.left = `${rect.right + 10}px`;
+                        tooltip.style.transform = 'translateY(-50%)';
+                    }
+                    
+                    // Make tooltip visible
+                    tooltip.style.opacity = '1';
+                });
+                
+                // On mouse leave
+                button.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+        }
+
+        // Event Listeners
+        stepButtons.forEach((button, index) => {
+            button.addEventListener('click', () => showStep(index));
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentStep > 0) showStep(currentStep - 1);
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentStep < totalSteps - 1) showStep(currentStep + 1);
+        });
+
+        // Image modal functionality
+        document.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG' && e.target.parentElement.classList.contains('image-container')) {
+                modal.style.display = 'block';
+                modalImg.src = e.target.src;
+                modalImg.alt = e.target.alt;
+            }
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Creator name with confetti
+        document.getElementById('creator-name').addEventListener('click', () => {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.8 },
+                colors: ['#002654', '#f7f7f7', '#f0f0f0', '#191919']
+            });
+        });
+
+        // Initialize with first step and set up tooltips
+        document.addEventListener('DOMContentLoaded', () => {
+            showStep(0);
+            setupTooltips();
+            
+            // Update tooltips on window resize
+            window.addEventListener('resize', () => {
+                setupTooltips();
+            });
+            
+            // Update tooltips whenever a step button is clicked
+            document.querySelectorAll('.step-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    setTimeout(setupTooltips, 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
